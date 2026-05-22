@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aung Kaung Pyae | IT & Data Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #ff0844;
+            --bg-dark: #050914;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        
+        /* Dynamic Animated Background */
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* Animated Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+        .orb-1 { width: 400px; height: 400px; background: rgba(0, 242, 254, 0.15); top: -100px; left: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: rgba(79, 172, 254, 0.1); bottom: 10%; right: -100px; animation-delay: -5s; }
+        .orb-3 { width: 300px; height: 300px; background: rgba(255, 8, 68, 0.08); top: 40%; left: 30%; animation-delay: -10s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 150px) scale(1.2); }
+        }
+
+        /* Glassmorphism Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 9, 20, 0.6); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+        .logo { font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: 2px; }
+        .logo span { color: var(--primary); }
+        .nav-links a {
+            color: var(--text-main); text-decoration: none; margin-left: 2.5rem;
+            font-size: 1rem; font-weight: 400; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* General Layout */
+        section { padding: 8rem 10% 4rem; min-height: 100vh; position: relative; }
+        h2 { font-size: 3rem; margin-bottom: 3rem; text-align: center; font-weight: 800; }
+        h2 span { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s;
+        }
+        .glass-card:hover { transform: translateY(-10px); border-color: rgba(0, 242, 254, 0.3); }
+
+        /* Hero Section */
+        #home { display: flex; align-items: center; justify-content: space-between; gap: 4rem; flex-wrap: wrap-reverse; }
+        .hero-text { flex: 1.2; min-width: 320px; animation: fadeInUp 1s ease forwards; }
+        .hero-text h3 { color: var(--primary); font-family: 'Fira Code', monospace; font-size: 1.2rem; margin-bottom: 1rem; }
+        .hero-text h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-text p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.8; max-width: 600px; }
+        
+        .btn {
+            padding: 15px 35px; background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000; text-decoration: none; font-weight: 600; border-radius: 30px;
+            display: inline-block; transition: all 0.3s; border: none; cursor: pointer; letter-spacing: 1px;
+        }
+        .btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 25px rgba(0, 242, 254, 0.3); }
+
+        /* Highlighted Quick Contact in Hero */
+        .hero-contact {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-contact a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .hero-contact a:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Photo Design */
+        .hero-photo { flex: 1; display: flex; justify-content: center; align-items: center; min-width: 300px; }
+        .image-container {
+            width: 360px; height: 360px; border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            padding: 8px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--bg-dark);
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.2);
+        }
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+            background-size: 400%;
+            z-index: -1;
+            animation: spinRing 8s linear infinite;
+        }
+        .image-container img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+            border: 5px solid var(--bg-dark);
+        }
+        .image-container:hover { transform: scale(1.08) translateY(-10px); box-shadow: 0 15px 50px rgba(0, 242, 254, 0.4); }
+
+        @keyframes spinRing {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Detailed About Section */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: stretch; }
+        .terminal-window {
+            background: #0d1117; border-radius: 12px; border: 1px solid var(--glass-border);
+            font-family: 'Fira Code', monospace; overflow: hidden; display: flex; flex-direction: column;
+        }
+        .term-header { background: #161b22; padding: 12px; display: flex; gap: 8px; border-bottom: 1px solid #30363d; }
+        .term-btn { width: 12px; height: 12px; border-radius: 50%; }
+        .term-body { padding: 20px; font-size: 0.95rem; line-height: 1.7; color: #a5d6ff; flex-grow: 1; }
+        
+        .story-text h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: #fff; }
+        .story-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.1rem; text-align: justify; }
+        .highlight-text { color: var(--primary); font-weight: 600; }
+
+        /* Deep Dive Projects Section */
+        .project-card { display: flex; flex-direction: column; gap: 1.5rem; }
+        .project-header { display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; }
+        .project-header i { font-size: 2.5rem; color: var(--primary); }
+        .project-content h4 { color: #fff; margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .project-content p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; }
+        
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .skill-item h4 { margin-bottom: 0.5rem; color: #fff; display: flex; justify-content: space-between; font-weight: 400; font-size: 0.95rem; }
+        .skill-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 1.5rem; overflow: hidden; }
+        .skill-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 10px; transform: translateX(-100%); transition: transform 1.5s ease; }
+        .show .skill-fill { transform: translateX(0); }
+        
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+        .tag { background: rgba(0, 242, 254, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 25px; font-size: 0.9rem; border: 1px solid rgba(0, 242, 254, 0.2); }
+
+        /* Animations */
+        .hidden { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .show { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Footer & Highlighted Contact Buttons */
+        footer { background: rgba(0,0,0,0.8); padding: 4rem 2rem 3rem; text-align: center; border-top: 1px solid var(--glass-border); position: relative; z-index: 10;}
+        
+        .contact-highlight {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .contact-highlight a {
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--primary);
+            padding: 12px 25px;
+            border-radius: 30px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+        .contact-highlight a i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+        .contact-highlight a:hover {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000;
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
+            transform: translateY(-5px);
+        }
+        .contact-highlight a:hover i {
+            color: #000;
+        }
+
+        .socials { margin-bottom: 1.5rem; }
+        .socials a { color: #fff; font-size: 1.8rem; margin: 0 15px; transition: color 0.3s; }
+        .socials a:hover { color: var(--primary); }
+
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 3.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-text h1 { font-size: 2.8rem; }
+            section { padding: 6rem 5% 3rem; }
+            .image-container { width: 300px; height: 300px; }
+            .contact-highlight { flex-direction: column; align-items: center; }
+            .contact-highlight a { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <nav>
+        <div class="logo">AK<span>Pyae</span>.</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">The Journey</a>
+            <a href="#projects">Use Cases</a>
+            <a href="#skills">Capabilities</a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="hero-text">
+            <h3><i class="fa-solid fa-terminal"></i> system.initialize()</h3>
+            <h1>Data-Driven <br><span>Digital Transformation.</span></h1>
+            <p>I am Aung Kaung Pyae. An IT Fresh Graduate driven by an insatiable curiosity, always eager to explore new technologies, learn advanced AI frameworks, and apply them to real-world supply chain efficiency.</p>
+            <a href="#projects" class="btn">Explore My Work</a>
+            
+            <div class="hero-contact">
+                <a href="mailto:aungkaungpyae1101@gmail.com"><i class="fa-solid fa-envelope"></i> aungkaungpyae1101@gmail.com</a>
+                <a href="tel:+660816142286"><i class="fa-solid fa-phone"></i> (+66) 0816142286</a>
+            </div>
+        </div>
+        
+        <div class="hero-photo">
+            <div class="image-container">
+                <img src="profile.png" alt="Aung Kaung Pyae">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="hidden">
+        <h2>My <span>Architecture</span></h2>
+        
+        <div class="about-grid">
+            <div class="terminal-window glass-card">
+                <div class="term-header">
+                    <div class="term-btn" style="background:#ff5f56;"></div>
+                    <div class="term-btn" style="background:#ffbd2e;"></div>
+                    <div class="term-btn" style="background:#27c93f;"></div>
+                </div>
+                <div class="term-body" id="term-text">
+                    <span style="color:#7ee787;">guest@akp:~$</span> whoami<br>
+                    > Aung Kaung Pyae | Multilingual Tech Professional<br><br>
+                    
+                    <span style="color:#7ee787;">guest@akp:~$</span> cat education.md<br>
+                    > MSc Digital Transformation - Mae Fah Luang Univ (Present)<br>
+                    > BSc Computer Systems Eng. - Univ of Sunderland (GPA: 3.8)<br><br>
+
+                    <span style="color:#7ee787;">guest@akp:~$</span> cat mindset.txt<br>
+                    > {"curiosity": "limitless", "status": "eager to learn and explore"}
+                </div>
+            </div>
+
+            <div class="story-text glass-card">
+                <h3>Translating Data into Decisions</h3>
+                <p>My academic foundation wasn't just about passing exams; it was about understanding how systems operate at scale. Graduating with a <span class="highlight-text">3.8 GPA in Computer Systems Engineering</span> provided me with a rigorous understanding of system architecture, databases, and programming logic.</p>
+                
+                <p>Today, as I pursue my <span class="highlight-text">Master's in Digital Transformation</span>, my focus has shifted entirely to operational application. I don't just want to build software—I want to use data to solve physical world problems. I am deeply passionate about applying predictive analytics to optimize modern supply chains, enhance logistics workflows, and forecast inventory demands.</p>
+                
+                <p>Beyond my formal education, my defining trait is my eagerness to continuously explore and learn. I am constantly seeking out new digital ecosystems and tools to push the boundaries of my current expertise, ensuring my skills adapt as rapidly as the tech landscape itself.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="hidden">
+        <h2>Technical <span>Use Cases</span></h2>
+        
+        <div class="about-grid">
+            <div class="glass-card project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <h3 style="color:#fff;">AI Image Classification Model</h3>
+                        <span style="color:var(--primary); font-family:'Fira Code'; font-size:0.9rem;">Python • Machine Learning • Data Processing</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h4>The Academic Project:</h4>
+                    <p>Developed a highly accurate, supervised machine learning model designed to detect and classify healthy versus infected tea leaves using massive image datasets.</p>
+                    
+                    <h4>The Business Translation:</h4>
+                    <p>The methodology utilized in this project—cleaning raw data, training predictive models, evaluating regression, and clustering algorithms—is the exact framework needed for <strong style="color:#fff;">Logistics Predictive Analytics</strong>. The same algorithms used to detect anomalies in leaves can be utilized to forecast supply chain disruptions, optimize delivery routes, and automate quality control in warehouses.</p>
+                </div>
+            </div>
+
+            <div class="glass-card project-card">
+                <div class="project-header">
+                    <i class="fa-solid fa-lock"></i>
+                    <div>
+                        <h3 style="color:#fff;">Secure Enterprise Auth System</h3>
+                        <span style="color:var(--primary); font-family:'Fira Code'; font-size:0.9rem;">JavaScript • REST API • Cybersecurity</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h4>The Academic Project:</h4>
+                    <p>Architected a secure, full-stack web authentication portal utilizing JSON Web Tokens (JWT). Implemented advanced hashing and encryption protocols to explicitly prevent token forgery and session hijacking.</p>
+                    
+                    <h4>The Business Translation:</h4>
+                    <p>In global freight forwarding and logistics, <strong style="color:#fff;">Data Security is paramount</strong>. This project demonstrates my deep understanding of how to protect sensitive enterprise data, secure user access to internal dashboards, and safely manage massive databases (like PostgreSQL and MongoDB) to prevent unauthorized operational breaches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="hidden">
+        <h2>Core <span>Capabilities</span></h2>
+        
+        <div class="skills-grid">
+            <div class="glass-card">
+                <h3 style="color:#fff; margin-bottom:1.5rem; border-bottom:1px solid var(--glass-border); padding-bottom:10px;">
+                    <i class="fa-solid fa-brain" style="color:var(--primary); margin-right:10px;"></i>Data & AI Modeling
+                </h3>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem; font-size:0.95rem;">Expertise in transforming raw logistics data into predictive insights using advanced evaluation metrics.</p>
+                <div class="tags">
+                    <span class="tag">Data Preprocessing</span>
+                    <span class="tag">Regression Analysis</span>
+                    <span class="tag">Classification Models</span>
+                    <span class="tag">Clustering</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3 style="color:#fff; margin-bottom:1.5rem; border-bottom:1px solid var(--glass-border); padding-bottom:10px;">
+                    <i class="fa-solid fa-code" style="color:var(--primary); margin-right:10px;"></i>Software Engineering
+                </h3>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem; font-size:0.95rem;">Fluent in the languages required to build scalable enterprise solutions and responsive dashboards.</p>
+                <div class="skill-item">
+                    <h4>Python <span style="color:var(--primary)">90%</span></h4>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h4>SQL <span style="color:var(--primary)">85%</span></h4>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h4>JavaScript / Web Dev <span style="color:var(--primary)">80%</span></h4>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3 style="color:#fff; margin-bottom:1.5rem; border-bottom:1px solid var(--glass-border); padding-bottom:10px;">
+                    <i class="fa-solid fa-database" style="color:var(--primary); margin-right:10px;"></i>Databases & Tools
+                </h3>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem; font-size:0.95rem;">Proficient in managing data architecture and utilizing visualization tools to present findings to stakeholders.</p>
+                <div class="tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Firebase</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Microsoft Excel</span>
+                    <span class="tag">RapidMiner</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3 style="color:#fff; margin-bottom:1.5rem; border-bottom:1px solid var(--glass-border); padding-bottom:10px;">
+                    <i class="fa-solid fa-earth-asia" style="color:var(--primary); margin-right:10px;"></i>Global Mindset
+                </h3>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem; font-size:0.95rem;">Cross-border logistics requires seamless communication. Equipped to collaborate across diverse networks.</p>
+                <div class="skill-item">
+                    <h4>Burmese <span style="color:var(--primary)">Native</span></h4>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h4>English <span style="color:var(--primary)">Professional</span></h4>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h4>Chinese <span style="color:var(--primary)">Conversational</span></h4>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 65%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <h4>Thai <span style="color:var(--primary)">Basic</span></h4>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 35%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-size: 2rem; margin-bottom: 2rem;">Let's <span>Connect</span></h2>
+        
+        <div class="contact-highlight">
+            <a href="mailto:aungkaungpyae1101@gmail.com"><i class="fa-solid fa-envelope"></i> aungkaungpyae1101@gmail.com</a>
+            <a href="tel:+660816142286"><i class="fa-solid fa-phone"></i> (+66) 0816142286</a>
+        </div>
+
+        <div class="socials">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <p style="color:var(--text-muted);">Based in Chiang Rai, Thailand</p>
+        <p style="color:var(--text-muted); margin-top:10px; font-size:0.9rem;">&copy; 2026 Aung Kaung Pyae. Designed for Digital Transformation.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.hidden, .glass-card').forEach((el) => {
+            el.classList.add('hidden'); 
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
